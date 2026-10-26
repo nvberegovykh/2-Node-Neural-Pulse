@@ -1,0 +1,16 @@
+{
+  "schema_version": "0.1.0",
+  "id": "observer-curious",
+  "name": "Curious Observer",
+  "axes": [
+    "caution",
+    "curiosity",
+    "engagement"
+  ],
+  "bias": [
+    0.2,
+    0.4,
+    0.15
+  ],
+  "description": "Artist-authored example: explore novelty while retaining caution."
+}

@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Neural Pulse controller v0.1.0",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "backend": {
+      "enum": [
+        "classical_reference",
+        "qpu_async"
+      ]
+    },
+    "sensor_weights": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "minimum": -2,
+          "maximum": 2
+        },
+        "minItems": 1,
+        "maxItems": 32
+      },
+      "minItems": 1,
+      "maxItems": 32
+    },
+    "character_alpha": {
+      "type": "number",
+      "minimum": 0.05,
+      "maximum": 1
+    },
+    "emotion_alpha": {
+      "type": "number",
+      "minimum": 0.05,
+      "maximum": 1
+    },
+    "character_coupling": {
+      "type": "number",
+      "minimum": -0.9,
+      "maximum": 0.9
+    },
+    "emotion_coupling": {
+      "type": "number",
+      "minimum": -0.9,
+      "maximum": 0.9
+    },
+    "max_iterations": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10000
+    },
+    "stable_iterations": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100
+    },
+    "state_error_tolerance": {
+      "type": "number",
+      "minimum": 1e-12,
+      "maximum": 1
+    },
+    "deadline_ms": {
+      "type": "number",
+      "minimum": 0.001,
+      "maximum": 10000
+    },
+    "max_sensor_age_ms": {
+      "type": "number",
+      "minimum": 0.001,
+      "maximum": 10000
+    },
+    "memory_capacity": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10000
+    },
+    "compute_j_per_swing": {
+      "type": "number",
+      "minimum": 1e-06,
+      "maximum": 1000
+    },
+    "reserve_j": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1000000000.0
+    },
+    "fallback_j": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1000000.0
+    },
+    "action_j": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1000000.0
+    },
+    "max_temperature_c": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 150
+    },
+    "max_overload_risk": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "max_uncertainty": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "hazard_sensor": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "hazard_stop_threshold": {
+      "type": "number",
+      "minimum": -1,
+      "maximum": 1
+    },
+    "target_manipulator": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "action_weights": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": -1,
+        "maximum": 1
+      },
+      "minItems": 1,
+      "maxItems": 32
+    },
+    "min_improvement_per_j": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1000000000.0
+    },
+    "stall_iterations": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100
+    }
+  },
+  "required": [
+    "schema_version",
+    "backend",
+    "sensor_weights",
+    "character_alpha",
+    "emotion_alpha",
+    "character_coupling",
+    "emotion_coupling",
+    "max_iterations",
+    "stable_iterations",
+    "state_error_tolerance",
+    "deadline_ms",
+    "max_sensor_age_ms",
+    "memory_capacity",
+    "compute_j_per_swing",
+    "reserve_j",
+    "fallback_j",
+    "action_j",
+    "max_temperature_c",
+    "max_overload_risk",
+    "max_uncertainty",
+    "hazard_sensor",
+    "hazard_stop_threshold",
+    "target_manipulator",
+    "action_weights",
+    "min_improvement_per_j",
+    "stall_iterations"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Neural Pulse telemetry v0.1.0",
+  "type": "object",
+  "properties": {
+    "energy_j": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1000000000000.0
+    },
+    "temperature_c": {
+      "type": "number",
+      "minimum": -273.15,
+      "maximum": 1000
+    },
+    "overload_risk": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "estop": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "energy_j",
+    "temperature_c",
+    "overload_risk",
+    "estop"
+  ],
+  "additionalProperties": false
+}

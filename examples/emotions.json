@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.1.0",
+  "graphs": [
+    {
+      "id": "curiosity",
+      "trigger": {
+        "sensor": "novelty",
+        "gte": 0.5
+      },
+      "nodes": [
+        {
+          "id": "interest",
+          "axis": "curiosity",
+          "a": 0.7,
+          "b": 0
+        },
+        {
+          "id": "approach",
+          "axis": "engagement",
+          "a": 0.2,
+          "b": 1
+        }
+      ],
+      "edges": [
+        {
+          "source": "interest",
+          "target": "approach",
+          "weight": 0.2
+        }
+      ]
+    },
+    {
+      "id": "vigilance",
+      "trigger": {
+        "sensor": "hazard",
+        "gte": 0.4
+      },
+      "nodes": [
+        {
+          "id": "caution",
+          "axis": "caution",
+          "a": 0.8,
+          "b": 2
+        },
+        {
+          "id": "withdraw",
+          "axis": "engagement",
+          "a": -0.5,
+          "b": 3
+        }
+      ],
+      "edges": [
+        {
+          "source": "caution",
+          "target": "withdraw",
+          "weight": -0.2
+        }
+      ]
+    }
+  ]
+}

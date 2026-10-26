@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1.0",
+  "id": "tabletop-sim",
+  "kind": "synthetic",
+  "mode": "simulation",
+  "shape": {
+    "description": "Abstract tabletop body; dimensions are placeholders.",
+    "frame": "body",
+    "dimensions_m": [
+      0.2,
+      0.2,
+      0.3
+    ]
+  },
+  "sensors": [
+    {
+      "id": "hazard",
+      "unit": "normalized"
+    },
+    {
+      "id": "novelty",
+      "unit": "normalized"
+    },
+    {
+      "id": "contact",
+      "unit": "normalized"
+    }
+  ],
+  "manipulators": [
+    {
+      "id": "virtual_axis",
+      "accessible": true,
+      "frame": "body",
+      "workspace_m": [
+        0.1,
+        0.1,
+        0.1
+      ],
+      "max_velocity_m_s": 0.05
+    }
+  ]
+}

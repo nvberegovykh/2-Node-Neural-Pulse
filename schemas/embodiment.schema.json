@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Neural Pulse embodiment v0.1.0",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "kind": {
+      "enum": [
+        "organic",
+        "synthetic",
+        "cybernetic"
+      ]
+    },
+    "mode": {
+      "enum": [
+        "simulation",
+        "hardware"
+      ]
+    },
+    "shape": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "frame": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "dimensions_m": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0.001,
+            "maximum": 100
+          },
+          "minItems": 3,
+          "maxItems": 3
+        }
+      },
+      "required": [
+        "description",
+        "frame",
+        "dimensions_m"
+      ],
+      "additionalProperties": false
+    },
+    "sensors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "unit": {
+            "const": "normalized"
+          }
+        },
+        "required": [
+          "id",
+          "unit"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 32
+    },
+    "manipulators": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "accessible": {
+            "type": "boolean"
+          },
+          "frame": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "workspace_m": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "max_velocity_m_s": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 10
+          }
+        },
+        "required": [
+          "id",
+          "accessible",
+          "frame",
+          "workspace_m",
+          "max_velocity_m_s"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 32
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "kind",
+    "mode",
+    "shape",
+    "sensors",
+    "manipulators"
+  ],
+  "additionalProperties": false
+}

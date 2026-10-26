@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Neural Pulse emotions v0.1.0",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "graphs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "trigger": {
+            "type": "object",
+            "properties": {
+              "sensor": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              "gte": {
+                "type": "number",
+                "minimum": -1,
+                "maximum": 1
+              }
+            },
+            "required": [
+              "sensor",
+              "gte"
+            ],
+            "additionalProperties": false
+          },
+          "nodes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "axis": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "a": {
+                  "type": "number",
+                  "minimum": -1,
+                  "maximum": 1
+                },
+                "b": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 255
+                }
+              },
+              "required": [
+                "id",
+                "axis",
+                "a",
+                "b"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 64
+          },
+          "edges": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "target": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "weight": {
+                  "type": "number",
+                  "minimum": -1,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "source",
+                "target",
+                "weight"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0,
+            "maxItems": 256
+          }
+        },
+        "required": [
+          "id",
+          "trigger",
+          "nodes",
+          "edges"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 32
+    }
+  },
+  "required": [
+    "schema_version",
+    "graphs"
+  ],
+  "additionalProperties": false
+}
